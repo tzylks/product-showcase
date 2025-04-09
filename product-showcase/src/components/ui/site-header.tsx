@@ -1,6 +1,9 @@
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ModeToggle } from './mode-toggle';
+import { ShoppingCart } from 'lucide-react';
+import { Button } from './button';
+import { CustomBadge } from './custom-badge';
 
 export function SiteHeader() {
     return (
@@ -14,7 +17,21 @@ export function SiteHeader() {
                     />
                     <h1 className='text-base font-medium'>Product Site</h1>
                 </div>
-                <ModeToggle />
+                <div className='flex items-center gap-2'>
+                    <CustomBadge
+                        content={3}
+                        variant='default'
+                        className='mr-4'
+                    >
+                        <Button
+                            variant={'ghost'}
+                            size='icon'
+                        >
+                            <ShoppingCart />
+                        </Button>
+                    </CustomBadge>
+                    <ModeToggle />
+                </div>
             </div>
         </header>
     );
