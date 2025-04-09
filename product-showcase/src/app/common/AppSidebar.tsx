@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+import { Calendar, Home, Inbox } from 'lucide-react';
 
 import {
     Sidebar,
@@ -24,19 +24,9 @@ const items = [
         icon: Inbox,
     },
     {
-        title: 'Calendar',
+        title: 'Cart',
         url: '#',
         icon: Calendar,
-    },
-    {
-        title: 'Search',
-        url: '#',
-        icon: Search,
-    },
-    {
-        title: 'Settings',
-        url: '#',
-        icon: Settings,
     },
 ];
 
@@ -52,7 +42,10 @@ export function AppSidebar() {
                         <SidebarMenu>
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
+                                    <SidebarMenuButton
+                                        className='hover:bg-yellow-500'
+                                        asChild
+                                    >
                                         <a href={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>

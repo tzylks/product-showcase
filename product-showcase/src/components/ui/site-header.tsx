@@ -1,11 +1,18 @@
+'use client';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ModeToggle } from './mode-toggle';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from './button';
 import { CustomBadge } from './custom-badge';
+import { useSelector } from 'react-redux';
 
 export function SiteHeader() {
+    const count = useSelector(
+        (state: { cart: Record<string, string> }) => state.cart.value
+    );
+
+    // console.log('this is count', count);
     return (
         <header className='w-full group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear'>
             <div className='flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6 justify-between'>
@@ -19,7 +26,7 @@ export function SiteHeader() {
                 </div>
                 <div className='flex items-center gap-2'>
                     <CustomBadge
-                        content={3}
+                        content={count.length}
                         variant='default'
                         className='mr-4'
                     >
