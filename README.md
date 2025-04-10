@@ -7,5 +7,16 @@ An application showcasing products. Features include parallax effects, dark mode
 - aceternity
 - redux
 
-# running
-navigate to /product-showcase and run ```npm run dev```
+## Getting Started
+
+Navigate to /product-showcase and run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
