@@ -1,4 +1,5 @@
-import { Calendar, Home, Inbox } from 'lucide-react';
+'use client';
+import { ShoppingCart, Home, Inbox } from 'lucide-react';
 
 import {
     Sidebar,
@@ -10,6 +11,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 // Menu items.
 const items = [
@@ -25,8 +27,8 @@ const items = [
     },
     {
         title: 'Cart',
-        url: '#',
-        icon: Calendar,
+        url: '/cart',
+        icon: ShoppingCart,
     },
 ];
 
@@ -46,10 +48,10 @@ export function AppSidebar() {
                                         className='hover:bg-yellow-500'
                                         asChild
                                     >
-                                        <a href={item.url}>
+                                        <Link href={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </a>
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}

@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/app/common/AppSidebar';
-import { ThemeProvider } from '@/components/ui/theme-provider';
-import { SiteHeader } from '@/components/ui/site-header';
-import StoreProvider from '@/app/store/StoreProvider';
+import { ClientProvider } from '@/app/common/ClientProvider';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -38,22 +34,7 @@ export default function RootLayout({
                     fontFamily: 'var(--font-geist-sans)',
                 }}
             >
-                <StoreProvider>
-                    <ThemeProvider
-                        attribute='class'
-                        defaultTheme='system'
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <SidebarProvider>
-                            <AppSidebar />
-                            <SidebarInset>
-                                <SiteHeader />
-                                {children}
-                            </SidebarInset>
-                        </SidebarProvider>
-                    </ThemeProvider>
-                </StoreProvider>
+                <ClientProvider>{children}</ClientProvider>
             </body>
         </html>
     );

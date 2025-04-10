@@ -6,13 +6,13 @@ import { ShoppingCart } from 'lucide-react';
 import { Button } from './button';
 import { CustomBadge } from './custom-badge';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 export function SiteHeader() {
-    const count = useSelector(
+    const cart = useSelector(
         (state: { cart: Record<string, string> }) => state.cart.value
     );
 
-    // console.log('this is count', count);
     return (
         <header className='w-full group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear'>
             <div className='flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6 justify-between'>
@@ -26,7 +26,7 @@ export function SiteHeader() {
                 </div>
                 <div className='flex items-center gap-2'>
                     <CustomBadge
-                        content={count.length}
+                        content={cart.length}
                         variant='default'
                         className='mr-4'
                     >
@@ -34,7 +34,9 @@ export function SiteHeader() {
                             variant={'ghost'}
                             size='icon'
                         >
-                            <ShoppingCart />
+                            <Link href='/cart'>
+                                <ShoppingCart />
+                            </Link>
                         </Button>
                     </CustomBadge>
                     <ModeToggle />

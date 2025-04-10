@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -14,14 +15,20 @@ export const Card = React.memo(
         hovered,
         setHovered,
     }: {
-        card: { title: string; src: string };
+        card: any;
         index: number;
         hovered: number | null;
         setHovered: React.Dispatch<React.SetStateAction<number | null>>;
     }) => {
         const dispatch = useDispatch<AppDispatch>();
-        const handleAdd = (item: string) => {
-            const newItem: CartItem = { id: Date.now(), name: item }; // Unique ID using timestamp
+        const handleAdd = (card: any) => {
+            const newItem: CartItem = {
+                id: Date.now(),
+                name: card.title,
+                src: card.src,
+                price: card.price,
+                content: card,
+            }; // Unique ID using timestamp
             dispatch(addItem(newItem));
         };
         return (
@@ -53,7 +60,7 @@ export const Card = React.memo(
                 </div>
                 {hovered === index && (
                     <div className='flex flex-end absolute inset-20 mb-15 flex items-end py-8 px-4'>
-                        <Button onClick={() => handleAdd(card.title)}>
+                        <Button onClick={() => handleAdd(card)}>
                             Add to Cart
                         </Button>
                     </div>
@@ -68,6 +75,7 @@ Card.displayName = 'Card';
 type Card = {
     title: string;
     src: string;
+    price: string;
 };
 
 export function FocusCards({ cards }: { cards: Card[] }) {

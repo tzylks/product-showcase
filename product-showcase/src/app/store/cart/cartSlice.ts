@@ -4,6 +4,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface CartItem {
   id: number;
   name: string;
+  src: string;
+  price: string;
+  content: React.ReactNode;
   // Add other properties as needed (e.g., price: number, quantity: number)
 }
 
