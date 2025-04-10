@@ -1,4 +1,4 @@
-# product-showcase
+# about
 An application showcasing products. Features include parallax effects, dark mode, redux state management and more.
 
 # technologies
